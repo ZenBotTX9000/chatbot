@@ -189,8 +189,6 @@ export default function Home() {
           setMessages([]);
           // saveAppData will be called by useEffect due to messages change
         }}
-        theme={theme}
-        toggleTheme={toggleTheme}
         persistedSuggestedModels={persistedSuggestedModels}
         onFetchedModelsSave={handleFetchedModelsSave}
         // Pass theme explicitly if Sidebar needs it for internal logic not covered by Tailwind dark:
