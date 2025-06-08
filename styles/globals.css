@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    height: 100%; /* Ensure html also has height 100% */
+  }
+  body {
+    @apply bg-background-light text-text-primary-light dark:bg-background-dark dark:text-text-primary-dark;
+    font-family: theme('fontFamily.sans'); /* Apply the default sans-serif font stack */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    scroll-behavior: smooth;
+  }
+
+  #__next {
+    height: 100%;
+  }
+
+  /* .dark and .light classes are removed as Tailwind's dark: variant handles this */
+
+  .chat-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .animate-pulse {
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+}
+
+@layer components {
+  /* .glass-effect and .glass-effect-light are removed. Will be rebuilt with utility classes. */
+
+  .text-gradient {
+    /* This can be kept if still desired, but ensure colors match new palette or are updated. */
+    /* For now, assuming it might be reused or updated later. */
+    background: linear-gradient(45deg, theme('colors.accent-light'), theme('colors.text-primary-dark')); /* Example update */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* @layer utilities are removed as direct Tailwind class usage is preferred. */
