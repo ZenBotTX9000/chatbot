@@ -195,7 +195,7 @@ export default function Home() {
         // For now, assuming Sidebar also uses Tailwind dark: variants based on html class
       />
       <motion.div
-        className="flex-1 flex flex-col w-full p-2 sm:p-4 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto" // Responsive padding and max-width
+        className="flex-1 flex flex-col w-full p-4 sm:p-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto" // Responsive padding and max-width
         // Main content area animation can be part of the overall page load or slightly delayed
         // For now, inheriting parent's y:20 to y:0, no separate opacity/delay here to keep it simple
       >
@@ -204,14 +204,14 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 100, delay: 0.1 }} // Added delay for API key section
-            className="p-4 sm:p-6 bg-card-bg-light dark:bg-card-bg-dark backdrop-blur-md shadow-xl rounded-xl border border-border-light dark:border-border-dark"
+            className="p-4 sm:p-6 bg-card-bg-light dark:bg-card-bg-dark backdrop-blur-md shadow-2xl rounded-2xl border border-border-light dark:border-border-dark"
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-accent-light dark:text-accent-dark mb-4">Enter OpenRouter API Key</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-accent-light dark:text-accent-dark mb-6">Enter OpenRouter API Key</h2>
             <input
               type="text"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
-              className="w-full p-3 rounded-lg bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark outline-none border border-border-light dark:border-border-dark"
+              className="w-full px-4 py-3 rounded-xl bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-2 dark:focus:ring-offset-background-dark outline-none border border-border-light dark:border-border-dark"
               placeholder="Paste your API key here"
             />
             <motion.button
@@ -234,7 +234,7 @@ export default function Home() {
                   setIsVerifyingApiKey(false);
                 }
               }}
-              className="mt-4 w-full px-4 py-3 bg-accent-light dark:bg-accent-dark text-text-primary-dark dark:text-text-primary-light rounded-lg font-semibold hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-2 dark:focus:ring-offset-background-dark flex items-center justify-center disabled:opacity-70"
+              className="mt-4 w-full px-5 py-3 bg-accent-light dark:bg-accent-dark text-text-primary-dark dark:text-text-primary-light rounded-xl font-semibold hover:bg-accent-hover-light dark:hover:bg-accent-hover-dark focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-2 dark:focus:ring-offset-background-dark flex items-center justify-center disabled:opacity-60"
             >
               {isVerifyingApiKey ? (
                 <>
@@ -251,7 +251,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
-                  className="mt-2 text-red-500 dark:text-red-400 text-sm"
+                  className="mt-3 text-red-500 dark:text-red-400 text-base"
                 >
                   {error}
                 </motion.div>
@@ -263,30 +263,30 @@ export default function Home() {
           <>
             {/* Header */}
             <motion.div
-              className="flex justify-between items-center p-3 sm:p-4 bg-card-bg-light dark:bg-card-bg-dark backdrop-blur-md shadow-lg rounded-xl border border-border-light dark:border-border-dark sticky top-2 sm:top-4 z-10 mb-2 sm:mb-4"
+              className="flex justify-between items-center p-4 sm:p-5 bg-card-bg-light dark:bg-card-bg-dark backdrop-blur-md shadow-xl rounded-2xl border border-border-light dark:border-border-dark sticky top-2 sm:top-4 z-10 mb-2 sm:mb-4"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }} // Refined Header animation
             >
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-accent-light dark:text-accent-dark">ZenBotTX9000</h1>
-              <div className="flex items-center space-x-2 sm:space-x-3">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-accent-light dark:text-accent-dark">ZenBotTX9000</h1>
+              <div className="flex items-center space-x-3 sm:space-x-4">
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: theme === 'dark' ? -10 : 10 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={toggleTheme}
-                  className="p-2 rounded-full text-accent-light dark:text-accent-dark hover:bg-background-light dark:hover:bg-border-dark focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark"
+                  className="p-2.5 rounded-full text-accent-light dark:text-accent-dark hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-1 dark:focus:ring-offset-background-dark"
                   aria-label="Toggle theme"
                 >
-                  {theme === 'dark' ? <FaSun size={20} /> : <FaMoon size={20} />}
+                  {theme === 'dark' ? <FaSun size={22} /> : <FaMoon size={22} />}
                 </motion.button>
                 <motion.button
                   whileHover={{ rotate: 90, scale: 1.1 }} // Cog already has rotate: 90
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setShowSidebar(true)}
-                  className="p-2 rounded-full text-accent-light dark:text-accent-dark hover:bg-background-light dark:hover:bg-border-dark focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark"
+                  className="p-2.5 rounded-full text-accent-light dark:text-accent-dark hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-1 dark:focus:ring-offset-background-dark"
                   aria-label="Settings"
                 >
-                  <FaCog size={22} />
+                  <FaCog size={24} />
                 </motion.button>
               </div>
             </motion.div>
@@ -295,7 +295,7 @@ export default function Home() {
             <motion.div
               ref={chatContainerRef}
               id="chat-container"
-              className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-3 sm:space-y-4"
+              className="flex-1 overflow-y-auto p-4 space-y-4 sm:space-y-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ type: 'spring', stiffness: 100, delay: 0.1 }}
@@ -313,7 +313,7 @@ export default function Home() {
 
             {/* Input Area */}
             <motion.div
-              className="p-3 sm:p-4 mt-2 sm:mt-4 bg-card-bg-light dark:bg-card-bg-dark backdrop-blur-md shadow-xl rounded-xl border border-border-light dark:border-border-dark flex items-center space-x-2"
+              className="p-4 sm:p-5 mt-2 sm:mt-4 bg-card-bg-light dark:bg-card-bg-dark backdrop-blur-md shadow-2xl rounded-2xl border border-border-light dark:border-border-dark flex items-center space-x-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: "easeOut", delay: 0.2 }}
@@ -324,7 +324,7 @@ export default function Home() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && !isStreaming && handleSend()}
-                className="flex-grow p-3 rounded-lg bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark outline-none border border-border-light dark:border-border-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark"
+                className="flex-grow px-4 py-3 rounded-xl bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-2 dark:focus:ring-offset-background-dark outline-none border border-border-light dark:border-border-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark"
                 placeholder="Type your message..."
                 disabled={isStreaming && !isPaused}
               />
@@ -333,7 +333,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 onClick={handleSend}
                 disabled={isStreaming && !isPaused}
-                className="p-3 bg-accent-light dark:bg-accent-dark text-text-primary-dark dark:text-text-primary-light rounded-lg font-semibold hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-2 dark:focus:ring-offset-background-dark disabled:opacity-50"
+                className="px-4 py-3 bg-accent-light dark:bg-accent-dark text-text-primary-dark dark:text-text-primary-light rounded-xl font-semibold hover:bg-accent-hover-light dark:hover:bg-accent-hover-dark focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-2 dark:focus:ring-offset-background-dark disabled:opacity-60"
               >
                 Send
               </motion.button>
@@ -342,10 +342,10 @@ export default function Home() {
                   whileHover={{ scale: 1.1, rotate: isPaused ? 0 : 5 }} // Rotate only if it's a pause icon
                   whileTap={{ scale: 0.9 }}
                   onClick={togglePause}
-                  className="p-3 bg-background-light dark:bg-border-dark text-accent-light dark:text-accent-dark rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-2 dark:focus:ring-offset-background-dark"
+                  className="px-4 py-3 bg-background-light dark:bg-border-dark text-accent-light dark:text-accent-dark rounded-xl hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-2 dark:focus:ring-offset-background-dark"
                   aria-label={isPaused ? "Play" : "Pause"}
                 >
-                  {isPaused ? <FaPlay size={20} /> : <FaPause size={20} />}
+                  {isPaused ? <FaPlay size={22} /> : <FaPause size={22} />}
                 </motion.button>
               )}
             </motion.div>
