@@ -72,7 +72,7 @@ export default function ChatMessage({ message, onCopy, theme }: ChatMessageProps
       // Applying new card style, responsive padding, and conditional user/assistant alignment
       className={`p-3 sm:p-4 m-1 sm:m-2 max-w-[80%] relative
                   bg-card-bg-light dark:bg-card-bg-dark
-                  backdrop-blur-md shadow-lg rounded-xl
+                  backdrop-blur-md shadow-lg rounded-2xl
                   border border-border-light dark:border-border-dark
                   ${message.role === 'user' ? 'self-end' : 'self-start'}`}
     >
@@ -90,14 +90,14 @@ export default function ChatMessage({ message, onCopy, theme }: ChatMessageProps
 
             return !isInline && match ? (
               // Code block with language
-              <div className="relative my-2 bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-md overflow-hidden">
+              <div className="relative my-2 border border-border-light dark:border-border-dark rounded-xl overflow-hidden">
                 <Highlight
                   code={String(children).replace(/\n$/, '')}
                   language={match[1] as any} // 'as any' to satisfy Prism's Language type
                   theme={codeBlockTheme as any} // Use the new theme, 'as any' for Prism theme type
                 >
                   {({ className: hlClassName, style, tokens, getLineProps, getTokenProps }) => (
-                    <pre className={`${hlClassName} p-4 text-sm overflow-x-auto`} style={{ ...style, margin: 0 }}>
+                    <pre className={`${hlClassName} px-4 py-3 text-sm overflow-x-auto`} style={{ ...style, margin: 0 }}>
                       {tokens.map((line, i) => (
                         <div {...getLineProps({ line, key: i })}>
                           {line.map((token, key) => (
@@ -112,7 +112,7 @@ export default function ChatMessage({ message, onCopy, theme }: ChatMessageProps
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => onCopy(String(children).replace(/\n$/, ''))}
-                  className="absolute top-2 right-2 p-1.5 rounded-md text-text-secondary-light dark:text-text-secondary-dark hover:bg-border-light dark:hover:bg-border-dark focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark"
+                  className="absolute top-2 right-2 p-2 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-1 dark:focus:ring-offset-codeBgLight dark:dark:focus:ring-offset-codeBgDark"
                   aria-label="Copy code to clipboard"
                 >
                   <FaCopy size={16} />
@@ -121,10 +121,7 @@ export default function ChatMessage({ message, onCopy, theme }: ChatMessageProps
             ) : (
               // Inline code or code block without a language
               <code
-                className={`px-1.5 py-0.5 rounded-md text-sm
-                           bg-background-light dark:bg-background-dark
-                           border border-border-light dark:border-border-dark
-                           text-accent-light dark:text-accent-dark`}
+                className={`px-1.5 py-1 rounded-md text-sm bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200`}
                 {...props}
               >
                 {children}
@@ -149,7 +146,7 @@ export default function ChatMessage({ message, onCopy, theme }: ChatMessageProps
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={handleCopy} // handleCopy already copies message.content
-          className="absolute bottom-2 right-2 p-1.5 rounded-md text-text-secondary-light dark:text-text-secondary-dark hover:bg-border-light dark:hover:bg-border-dark focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark"
+          className="absolute bottom-2 right-2 p-2 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-accent-light dark:focus:ring-accent-dark focus:ring-offset-1 dark:focus:ring-offset-card-bg-light dark:dark:focus:ring-offset-card-bg-dark"
           aria-label="Copy message to clipboard"
         >
           <FaCopy size={16} />

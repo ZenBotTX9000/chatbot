@@ -13,6 +13,7 @@ module.exports = {
         'text-primary-dark': '#E0E0E0',
         'text-secondary-dark': '#A0A0A0',
         'accent-dark': '#14B8A6', // Teal accent
+        'accent-hover-dark': '#0F9A8A', // Slightly darker teal for hover
         'card-bg-dark': 'rgba(30, 30, 30, 0.7)',
         'border-dark': '#2D2D2D',
 
@@ -21,6 +22,7 @@ module.exports = {
         'text-primary-light': '#202020',
         'text-secondary-light': '#707070',
         'accent-light': '#14B8A6', // Same Teal accent
+        'accent-hover-light': '#0F9A8A', // Slightly darker teal for hover
         'card-bg-light': 'rgba(255, 255, 255, 0.7)',
         'border-light': '#DCDCDC',
 
@@ -32,6 +34,16 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+      },
+      borderRadius: {
+        'sm': '0.125rem', // 2px
+        'DEFAULT': '0.25rem', // 4px
+        'md': '0.375rem', // 6px
+        'lg': '0.5rem', // 8px
+        'xl': '0.75rem', // 12px
+        '2xl': '1rem', // 16px
+        '3xl': '1.5rem', // 24px
+        'full': '9999px',
       },
       backgroundImage: {
         'gradient-grey': 'linear-gradient(135deg, #1a1a1a, #4a4a4a)', // Consider updating if it uses old colors
